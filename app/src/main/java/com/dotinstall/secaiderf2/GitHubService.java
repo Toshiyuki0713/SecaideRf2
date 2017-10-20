@@ -10,11 +10,10 @@ import retrofit2.http.Query;
 
 public interface GitHubService {
     //APIを取得する場所はここで合ってますか？
-    @GET("https://travossbot.herokuapp.com/api/userwalkdata/")
+    // MainActivityで宣言しているので。以下が正しいです。
+    @GET("/api/userwalkdata/")
     Call<BiposiWalk> getBiposiWalk(
             //ここら辺がサンプルによって結構違うので分かりにくいです
-            @Query("key") String key,
-            @Query("large_area") String area,
-            @Query("format") String format);
+            @Query("username") String username);
 
 }
