@@ -25,7 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
         GitHubService service = retrofit.create(GitHubService.class);
 
-        Call<BiposiWalk> call = service.getBiposiWalk(user_name);
+
+
+        Call<BiposiWalk> call = service.getBiposiWalk("user_name");
 
 
         call.enqueue(new Callback<BiposiWalk>() {
