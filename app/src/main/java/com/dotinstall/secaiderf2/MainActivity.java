@@ -3,9 +3,7 @@ package com.dotinstall.secaiderf2;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -20,30 +18,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //ここら辺の使い方が合っているか分からないです
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://travossbot.herokuapp.com")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
-        //エラーが出てしまいます
-        Service = Retrofit.create(GitHubService.class);
+        GitHubService service = retrofit.create(GitHubService.class);
 
-        //ここから下がほとんどエラーの元みたいです。コピペして()内とかを変えただけなので文法ミスはないと思うのですが
-        Call<BiposiWalk> call = service.getBiposiWalk(user);
+        Call<BiposiWalk> call = service.getBiposiWalk(user_name);
+
+
         call.enqueue(new Callback<BiposiWalk>() {
             @Override
-            public void onResponse(Response<BiposiWalk> response) {
+            public void onResponse(Call<BiposiWalk> call, Response<BiposiWalk> response) {
 
-                ((TextView) findViewById(R.id.textview)).setText(new String());
+                ((TextView) findViewById(R.id.textview)).setText("受け取った文字列" + response.body());
 
             }
 
             @Override
-            public void onFailure(Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_LONG).show();
+            public void onFailure(Call<BiposiWalk> call, Throwable t) {
             }
         });
-
     }
 }
