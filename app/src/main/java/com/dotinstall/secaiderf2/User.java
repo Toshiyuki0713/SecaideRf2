@@ -5,4 +5,5 @@ package com.dotinstall.secaiderf2;
  */
 
 public class User {
+
 }

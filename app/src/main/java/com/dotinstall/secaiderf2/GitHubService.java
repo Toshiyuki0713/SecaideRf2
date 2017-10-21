@@ -12,5 +12,5 @@ public interface GitHubService {
 
     @GET("/api/userwalkdata/")
     Call<BiposiWalk> getBiposiWalk(
-            @Query("user") User user);
-    }
+            @Query("user") String user);
+}
