@@ -30,4 +30,7 @@ dependencies {
 
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
+    compile(name:'line-sdk-4.0.6', ext:'aar')
+    compile 'com.android.support:customtabs:26.1.0'
 }
