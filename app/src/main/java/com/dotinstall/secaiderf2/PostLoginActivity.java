@@ -24,7 +24,7 @@ public class PostLoginActivity extends AppCompatActivity {
     private LineApiClient lineApiClient;
     TextView profileText;
 
-    private User user;
+    //private User user;
 
 
 
@@ -33,28 +33,24 @@ public class PostLoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
+        User user;
+        user = new User();
+
         SharedPreferences lineData = getSharedPreferences("DataSave", Context.MODE_PRIVATE);
-        String Level = lineData.getString("user_id", "No Data"); */
+        String level = lineData.getString("user_id", "No Data");
 
 
-
+        user.lineUserId = level;
 
 
 
 
         //private ListView mListView;
-
-
-
-
         /*
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_main); */
-
-
             //mListView = (ListView) findViewById(R.id.userdata);
 
 
