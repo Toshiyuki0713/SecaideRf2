@@ -9,6 +9,5 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class User extends AppCompatActivity {
-    SharedPreferences lineData = getSharedPreferences("DataSave", Context.MODE_PRIVATE);
-    String Level = lineData.getString("user_id", "No Data");
+        String lineUserId;
     }
