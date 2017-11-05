@@ -11,6 +11,6 @@ import retrofit2.http.Query;
 public interface GitHubService {
 
     @GET("/api/userwalkdata/")
-    Call<BiposiWalk> getBiposiWalk(
-            @Query("user") String user);
-}
+    Call<BiposiWalk> getBiposiWalk(@Query("user") User user);
+
+    }

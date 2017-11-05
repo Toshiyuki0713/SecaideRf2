@@ -18,6 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.dotinstall.secaiderf2.PostLoginActivity" android:label="Secaide"></activity>
+
     </application>
 
 </manifest>
