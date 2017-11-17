@@ -1,6 +1,11 @@
 package com.dotinstall.secaiderf2;
 
+import android.util.Log;
+
+import java.util.List;
+
 import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -11,6 +16,5 @@ import retrofit2.http.Query;
 public interface GitHubService {
 
     @GET("/api/userwalkdata/")
-    Call<BiposiWalk> getBiposiWalk(@Query("user_id") User user);
-
-    }
+    Call<List<BiposiWalk>> getBiposiWalk(@Query("user") String userId);
+}

@@ -71,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = lineData.edit();
                 editor.putString("user_id", result.getLineProfile().getUserId());
                 editor.apply();
+                Log.e("SharedOK", editor.toString());
 
                 Intent transitionIntent = new Intent(this, PostLoginActivity.class);
                 //transitionIntent.putExtra("display_name", result.getLineProfile().getDisplayName());
@@ -79,9 +80,6 @@ public class MainActivity extends AppCompatActivity {
                 //transitionIntent.putExtra("user_id", result.getLineProfile().getUserId());
                 startActivity(transitionIntent);
                 break;
-
-
-
 
             case CANCEL:
                 // Login canceled by user

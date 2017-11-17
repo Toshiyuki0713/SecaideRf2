@@ -11,16 +11,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import com.google.gson.Gson;
-import com.linecorp.linesdk.LineCredential;
-import com.linecorp.linesdk.LineProfile;
-import com.linecorp.linesdk.api.LineApiClient;
-import com.linecorp.linesdk.api.LineApiClientBuilder;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -30,25 +22,26 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.R.id.candidatesArea;
-import static android.R.id.list;
-import static android.R.id.list_container;
-import static java.security.AccessController.getContext;
+/**
+ * Created by gosho on 2017/10/23.
+ */
 
-public class PostLoginActivity extends AppCompatActivity {
+public class Biposi extends AppCompatActivity {
 
-    private LineApiClient lineApiClient;
-    TextView profileText;
-
+    private String message;
     private ListView BiposiView;
-
-    //private User user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent intent = getIntent();
+        message = intent.getStringExtra("message");
+
+        TextView textView = (TextView) findViewById(R.id.profileName);
+        textView.setText(message);
+
 
         User user;
         user = new User();
@@ -86,57 +79,37 @@ public class PostLoginActivity extends AppCompatActivity {
                 //new String()はStringを生成するものです
                 //((TextView) findViewById(R.id.biposiView)).setText("受け取った文字列"+ response.body());
 
-                List<BiposiWalk> biposiWalkList = response.body();
-                Log.e("response", biposiWalkList.toString());
+                List<BiposiWalk> biposiWalk = response.body();
+                Log.e("response", biposiWalk.toString());
 
 
                 //BiposiView biposiView = new BiposiView();
 
 
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(PostLoginActivity.this, R.layout.biposi_list, R.id.biposiRow_text);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(Biposi.this, R.layout.biposi_list, R.id.biposiRow_text);
                 Log.e("ArrayAdapter", adapter.toString());
 
+                try {
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
+                    Date date = sdf.parse(biposiWalk.toString());
+                    System.out.println(date.toString());
+                    Log.e("sdf", date.toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    Log.e("ParseException", e.toString());
 
-                for (BiposiWalk b : biposiWalkList) {
+                }
+
+                for (BiposiWalk b : biposiWalk) {
                     StringBuilder builder = new StringBuilder();
                     builder.append(b.getStartDate() + b.getSteps() + "歩");
                     adapter.add(builder.toString());
-                    System.out.println((biposiWalkList));
-                    Log.e("startDate", b.toString());
+                    //System.out.println(Arrays.toString(biposiWalk));
+                    Log.e("getSteps", b.toString());
 
-                    try {
-                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy'-'MM'-'dd' 'HH':'mm':'ss");
-                        Date date = sdf.parse(b.getStartDate());
-                        //System.out.println(date);
-                        SimpleDateFormat str = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss Z");
-                        System.out.println("String型 = " + str);
-                        Log.e("sdf", date.toString());
-                        Log.e("str", date.toString());
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                        Log.e("ParseException", e.toString());
-
-                    }
-
-                    /*
-                    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年M月d日 HH時mm分ss秒 Z");
-                    //System.out.println(sdf2.format(b.getStartDate()));
+                    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年M月d日 HH時mm分ss秒");
+                    //System.out.println(sdf2.format(b));
                     Log.e("date", sdf2.toString());
-
-                    try {
-                        String strDate = "2017/03/02 01:23:45";
-                        SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy/MM/dd hh:mm:ss");
-                        Date date = sdFormat.parse(strDate);
-                        System.out.println("Date型 = " + date);
-
-                        String str = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
-                        System.out.println("String型 = " + str);
-
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    */
 
                 }
 
@@ -153,30 +126,19 @@ public class PostLoginActivity extends AppCompatActivity {
             }
         });
 
-
-        LineApiClientBuilder apiClientBuilder = new LineApiClientBuilder(getApplicationContext(), Constants.CHANNEL_ID);
-        lineApiClient = apiClientBuilder.build();
-
-        Intent intent = getIntent();
-        LineProfile intentProfile = intent.getParcelableExtra("line_profile");
-        //LineCredential intentCredential = intent.getParcelableExtra("line_credential");
-
-        profileText = (TextView) findViewById(R.id.profileName);
-        profileText.setText(intentProfile.getDisplayName() + "さん");
     }
 
     public void health_data(View view) {
         Intent intent = new Intent(this, HealthCareData.class);
-        String str = profileText.getText().toString();
+        String str = message.toString();
         intent.putExtra("message", str);
         startActivity(intent);
     }
 
     public void koredake_view(View view) {
         Intent intent = new Intent(this, Koredake.class);
-        String str = profileText.getText().toString();
+        String str = message.toString();
         intent.putExtra("message", str);
         startActivity(intent);
-        Log.e("start", intent.toString());
     }
 }
