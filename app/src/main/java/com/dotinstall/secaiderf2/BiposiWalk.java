@@ -1,5 +1,7 @@
 package com.dotinstall.secaiderf2;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -7,13 +9,19 @@ import com.google.gson.annotations.SerializedName;
  * Created by gosho on 2017/10/20.
  */
 
-//サンプルを真似ただけなのですが、リンク先のJSONをちゃんとPOJO変換してコピペした方がいいでしょうか？
+
 public class BiposiWalk {
 
-    @SerializedName("steps")
+    @Override
+    public String toString() {
+        return startDate;
+    }
+
+
+    //@SerializedName("steps")
     @Expose
     private String steps;
-    @SerializedName("distance")
+    //@SerializedName("distance")
     @Expose
     private String distance;
     @SerializedName("start_date")
@@ -25,13 +33,11 @@ public class BiposiWalk {
     @SerializedName("created_at")
     @Expose
     private String createdAt;
-    @SerializedName("user")
+    //@SerializedName("user")
     @Expose
     private String user;
 
-    public String getSteps() {
-        return steps;
-    }
+    public String getSteps() { return steps; }
 
     public void setSteps(String steps) {
         this.steps = steps;
