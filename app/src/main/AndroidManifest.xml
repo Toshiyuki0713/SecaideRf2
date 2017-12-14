@@ -10,8 +10,10 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/secaide_icon1"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" android:label="se･ca･ide">
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +24,12 @@
         <activity android:name="com.dotinstall.secaiderf2.Koredake" android:label="se･ca･ide"></activity>
         <activity android:name="com.dotinstall.secaiderf2.Biposi" android:label="se･ca･ide"></activity>
         <activity android:name="com.dotinstall.secaiderf2.HealthCareData" android:label="se･ca･ide"></activity>
+        <activity android:name="com.dotinstall.secaiderf2.MainActivity" android:label="se･ca･ide"></activity>
+        <activity android:name="com.dotinstall.secaiderf2.Calendar" android:label="se･ca･ide"></activity>
+        <activity android:name="com.dotinstall.secaiderf2.Top" android:label="se･ca･ide"></activity>
+
+
+
     </application>
 
 </manifest>

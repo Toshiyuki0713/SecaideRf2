@@ -8,11 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +24,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static android.R.id.list;
+
 /**
  * Created by gosho on 2017/10/23.
  */
@@ -30,18 +34,29 @@ public class Biposi extends AppCompatActivity {
 
     private String message;
     private ListView BiposiView;
+    private BackOnCanvas2 backCanvas2;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.biposi_activity);
 
+        backCanvas2 = (BackOnCanvas2) this.findViewById(R.id.back2);
+
+
+        /*
         Intent intent = getIntent();
         message = intent.getStringExtra("message");
 
         TextView textView = (TextView) findViewById(R.id.profileName);
         textView.setText(message);
 
+
+        ImageView imagebipo = findViewById(R.id.biposiActivity);
+        imagebipo.setImageResource(R.drawable.biposi_back);
+
+        */
 
         User user;
         user = new User();
@@ -79,15 +94,22 @@ public class Biposi extends AppCompatActivity {
                 //new String()はStringを生成するものです
                 //((TextView) findViewById(R.id.biposiView)).setText("受け取った文字列"+ response.body());
 
+
                 List<BiposiWalk> biposiWalk = response.body();
                 Log.e("response", biposiWalk.toString());
 
-
-                //BiposiView biposiView = new BiposiView();
-
-
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Biposi.this, R.layout.biposi_list, R.id.biposiRow_text);
                 Log.e("ArrayAdapter", adapter.toString());
+
+                
+                //Collections.sort(biposiWalk, new BiposiComparator());
+
+                for (BiposiWalk obj : biposiWalk) {
+                    System.out.println(obj.getStartDate());
+                }
+
+
+
 
                 try {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
@@ -116,6 +138,9 @@ public class Biposi extends AppCompatActivity {
 
                 BiposiView.setAdapter(adapter);
 
+                Collections.reverse(biposiWalk);
+                Log.e("Collections biposi", biposiWalk.toString());
+
             }
 
 
@@ -137,8 +162,8 @@ public class Biposi extends AppCompatActivity {
 
     public void koredake_view(View view) {
         Intent intent = new Intent(this, Koredake.class);
-        String str = message.toString();
-        intent.putExtra("message", str);
+        //String str = message.toString();
+        //intent.putExtra("message", str);
         startActivity(intent);
     }
 }

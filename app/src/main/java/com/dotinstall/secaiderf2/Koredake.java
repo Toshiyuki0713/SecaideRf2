@@ -8,8 +8,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -26,18 +30,29 @@ public class Koredake extends AppCompatActivity {
 
     private String message;
     private ListView KoredakeView;
+    private BackOnCanvas backCanvas;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_koredake);
+        setContentView(R.layout.koredake_activity);
 
+        backCanvas = (BackOnCanvas) this.findViewById(R.id.back);
+
+
+        /*
+        ImageView imagebipo = findViewById(R.id.koredakeActivity);
+        imagebipo.setImageResource(R.drawable.touch3); */
+
+        /*
         Intent intent = getIntent();
         message = intent.getStringExtra("message");
 
         TextView textView = (TextView) findViewById(R.id.profileName);
         textView.setText(message);
+        */
+
 
 
         User user;
@@ -83,6 +98,7 @@ public class Koredake extends AppCompatActivity {
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Koredake.this, R.layout.biposi_list, R.id.biposiRow_text);
                 Log.e("ArrayAdapter", adapter.toString());
 
+
                 try {
                     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
                     Date date = sdf.parse(koredake.toString());
@@ -110,6 +126,7 @@ public class Koredake extends AppCompatActivity {
 
                 KoredakeView.setAdapter(adapter);
 
+
             }
 
 
@@ -125,8 +142,8 @@ public class Koredake extends AppCompatActivity {
 
     public void main_view (View view) {
         Intent intent = new Intent(this, Biposi.class);
-        String str = message.toString();
-        intent.putExtra("message", str);
+        //String str = message.toString();
+        //intent.putExtra("message", str);
         startActivity(intent);
     }
 }
