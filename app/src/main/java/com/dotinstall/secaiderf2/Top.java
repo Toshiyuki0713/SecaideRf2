@@ -1,14 +1,7 @@
 package com.dotinstall.secaiderf2;
 
-import android.content.Context;
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.graphics.RectF;
 import android.os.Bundle;
-import android.support.annotation.LayoutRes;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -20,19 +13,18 @@ import android.widget.ImageView;
 
 public class Top extends AppCompatActivity {
 
-    private BackOnCanvas backCanvas;
+    private TopBack topBack;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.top);
 
-        backCanvas = (BackOnCanvas) this.findViewById(R.id.back);
+        topBack = (TopBack) this.findViewById(R.id.back);
 
-        /*
+
         ImageView imageView = findViewById(R.id.top);
-        imageView.setImageResource(R.drawable.secaide_03);
-        */
+        imageView.setImageResource(R.drawable.title);
 
         /*
         TestView testView = new TestView(this);

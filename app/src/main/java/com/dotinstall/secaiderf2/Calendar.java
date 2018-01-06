@@ -12,7 +12,7 @@ import android.widget.ImageView;
 
 public class Calendar extends AppCompatActivity {
 
-    private BackOnCanvas3 backCanvas3;
+    private CalendarBack calendarBack;
 
 
     @Override
@@ -20,18 +20,42 @@ public class Calendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.calendar);
 
-        backCanvas3 = (BackOnCanvas3) this.findViewById(R.id.back3);
+        calendarBack = (CalendarBack) this.findViewById(R.id.back3);
 
-        /*
-        ImageView imageView = findViewById(R.id.calendar);
-        imageView.setImageResource(R.drawable.korecalendar); */
+
+        ImageView imageView = findViewById(R.id.sec_cal);
+        imageView.setImageResource(R.drawable.sec_calendar);
+
+        ImageView imageView2 = findViewById(R.id.koredeki_undo);
+        imageView2.setImageResource(R.drawable.koredeki);
 
     }
 
-    public void login_activity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
 
+    public void login_activity(View view) {
+        Intent intent = new Intent(this, Koredake.class);
+        startActivity(intent);
+    }
+
+    public void koredake_view (View view) {
+        Intent intent = new Intent(this, Koredake.class);
+        //String str = message.toString();
+        //intent.putExtra("message", str);
+        startActivity(intent);
+    }
+
+    public void main_view (View view) {
+        Intent intent = new Intent(this, Biposi.class);
+        //String str = message.toString();
+        //intent.putExtra("message", str);
+        startActivity(intent);
+    }
+
+    public void health_data (View view) {
+        Intent intent = new Intent(this, HealthCareData.class);
+        //String str = message.toString();
+        //intent.putExtra("message", str);
+        startActivity(intent);
     }
 
 }

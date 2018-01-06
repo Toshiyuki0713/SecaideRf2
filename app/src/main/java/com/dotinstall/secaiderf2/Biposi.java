@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,8 +23,6 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static android.R.id.list;
-
 /**
  * Created by gosho on 2017/10/23.
  */
@@ -34,7 +31,7 @@ public class Biposi extends AppCompatActivity {
 
     private String message;
     private ListView BiposiView;
-    private BackOnCanvas2 backCanvas2;
+    private BiposiBack biposiBack;
 
 
     @Override
@@ -42,8 +39,25 @@ public class Biposi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.biposi_activity);
 
-        backCanvas2 = (BackOnCanvas2) this.findViewById(R.id.back2);
+        biposiBack = (BiposiBack) this.findViewById(R.id.back2);
 
+        ImageView imageSecList = findViewById(R.id.secListView);
+        imageSecList.setImageResource(R.drawable.sec_list2);
+
+        ImageView imageBi = findViewById(R.id.biIcon);
+        imageBi.setImageResource(R.drawable.bi);
+
+        ImageView imageSan = findViewById(R.id.sanIcon);
+        imageSan.setImageResource(R.drawable.san);
+
+        ImageView imageH = findViewById(R.id.hIcon);
+        imageH.setImageResource(R.drawable.h);
+
+        ImageView imageKore = findViewById(R.id.korenara);
+        imageKore.setImageResource(R.drawable.koredeki);
+
+        ImageView imagePush = findViewById(R.id.bipoHaya);
+        imagePush.setImageResource(R.drawable.bipohaya);
 
         /*
         Intent intent = getIntent();
@@ -155,8 +169,8 @@ public class Biposi extends AppCompatActivity {
 
     public void health_data(View view) {
         Intent intent = new Intent(this, HealthCareData.class);
-        String str = message.toString();
-        intent.putExtra("message", str);
+        //String str = message.toString();
+        //intent.putExtra("message", str);
         startActivity(intent);
     }
 
