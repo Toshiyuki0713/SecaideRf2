@@ -36,7 +36,7 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 // トップ画面を立ち上げ、速やかに終了する
-                Intent intent = new Intent(SplashActivity.this, Top.class);
+                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
                 startActivity(intent);
                 finish();
             }

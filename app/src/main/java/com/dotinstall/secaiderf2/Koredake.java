@@ -10,10 +10,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -30,7 +26,7 @@ public class Koredake extends AppCompatActivity {
 
     private String message;
     private ListView KoredakeView;
-    private BackOnCanvas backCanvas;
+    private KoreHealthBack koreHealthBack;
 
 
     @Override
@@ -38,8 +34,25 @@ public class Koredake extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.koredake_activity);
 
-        backCanvas = (BackOnCanvas) this.findViewById(R.id.back);
+        koreHealthBack = (KoreHealthBack) this.findViewById(R.id.back);
 
+        ImageView imageSecList = findViewById(R.id.secListView);
+        imageSecList.setImageResource(R.drawable.sec_list2);
+
+        ImageView imageBi = findViewById(R.id.biIcon);
+        imageBi.setImageResource(R.drawable.bi);
+
+        ImageView imageSan = findViewById(R.id.sanIcon);
+        imageSan.setImageResource(R.drawable.san);
+
+        ImageView imageH = findViewById(R.id.hIcon);
+        imageH.setImageResource(R.drawable.h);
+
+        ImageView imageKore = findViewById(R.id.korenara);
+        imageKore.setImageResource(R.drawable.koredeki);
+
+        ImageView imagePush = findViewById(R.id.push);
+        imagePush.setImageResource(R.drawable.touch3);
 
         /*
         ImageView imagebipo = findViewById(R.id.koredakeActivity);
@@ -142,6 +155,13 @@ public class Koredake extends AppCompatActivity {
 
     public void main_view (View view) {
         Intent intent = new Intent(this, Biposi.class);
+        //String str = message.toString();
+        //intent.putExtra("message", str);
+        startActivity(intent);
+    }
+
+    public void health_data (View view) {
+        Intent intent = new Intent(this, HealthCareData.class);
         //String str = message.toString();
         //intent.putExtra("message", str);
         startActivity(intent);

@@ -28,11 +28,11 @@ public class BackOnCanvas extends AppCompatActivity {
     }
     */
 
-    public class BackOnCanvas extends View {
+    public class TopBack extends View {
 
         Paint paint;
 
-        public BackOnCanvas(Context context, AttributeSet attrs) {
+        public TopBack(Context context, AttributeSet attrs) {
             super(context, attrs);
             paint = new Paint();
         }
@@ -43,7 +43,7 @@ public class BackOnCanvas extends AppCompatActivity {
 
             // 三角形を書く
             paint.setStrokeWidth(10);
-            paint.setColor(Color.BLUE);
+            paint.setARGB(255, 102, 139, 192);
             Path path = new Path();
             path.moveTo(0, 0);
             path.lineTo(1440, 0);
@@ -53,7 +53,7 @@ public class BackOnCanvas extends AppCompatActivity {
 
 
             paint.setStrokeWidth(10);
-            paint.setColor(Color.CYAN);
+            paint.setARGB(255, 101, 173, 219);
             Path path2 = new Path();
             path2.moveTo(1440, 0);
             path2.lineTo(1540, 0);

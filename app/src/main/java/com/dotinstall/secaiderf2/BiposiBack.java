@@ -12,10 +12,10 @@ import android.view.View;
  * Created by gosho on 2017/12/10.
  */
 
-public class BackOnCanvas2 extends View {
+public class BiposiBack extends View {
     Paint paint;
 
-    public BackOnCanvas2(Context context, AttributeSet attrs) {
+    public BiposiBack(Context context, AttributeSet attrs) {
         super(context, attrs);
         paint = new Paint();
     }
@@ -26,7 +26,7 @@ public class BackOnCanvas2 extends View {
 
         // 三角形を書く
         paint.setStrokeWidth(10);
-        paint.setColor(Color.LTGRAY);
+        paint.setARGB(255, 229, 233, 169);
         Path path = new Path();
         path.moveTo(0, 0);
         path.lineTo(1440, 0);
@@ -36,7 +36,7 @@ public class BackOnCanvas2 extends View {
 
 
         paint.setStrokeWidth(10);
-        paint.setColor(Color.GREEN);
+        paint.setARGB(255, 149, 194, 143);
         Path path2 = new Path();
         path2.moveTo(1440, 0);
         path2.lineTo(1540, 0);
