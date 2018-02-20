@@ -13,7 +13,8 @@
         android:background="@drawable/korecalendar"
         android:gravity="center_horizontal"
         android:orientation="vertical"
-        android:weightSum="1">
+        android:weightSum="1"
+        android:id="@+id/linearLayout2">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -185,5 +186,13 @@
 
 
     </LinearLayout>
+
+    <CalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp" />
 
 </RelativeLayout>

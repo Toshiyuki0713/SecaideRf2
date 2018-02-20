@@ -11,11 +11,19 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.text.ParseException;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -32,6 +40,8 @@ public class Biposi extends AppCompatActivity {
     private String message;
     private ListView BiposiView;
     private BiposiBack biposiBack;
+    //private ArrayList<String> DateList;
+    private List<DateList> DateList;
 
 
     @Override
@@ -58,19 +68,6 @@ public class Biposi extends AppCompatActivity {
 
         ImageView imagePush = findViewById(R.id.bipoHaya);
         imagePush.setImageResource(R.drawable.bipohaya);
-
-        /*
-        Intent intent = getIntent();
-        message = intent.getStringExtra("message");
-
-        TextView textView = (TextView) findViewById(R.id.profileName);
-        textView.setText(message);
-
-
-        ImageView imagebipo = findViewById(R.id.biposiActivity);
-        imagebipo.setImageResource(R.drawable.biposi_back);
-
-        */
 
         User user;
         user = new User();
@@ -105,55 +102,83 @@ public class Biposi extends AppCompatActivity {
             public void onResponse(Call<List<BiposiWalk>> call, Response<List<BiposiWalk>> response) {
                 Log.e("onResponse", response.toString());
                 Log.e("onResponse", call.toString());
-                //new String()はStringを生成するものです
-                //((TextView) findViewById(R.id.biposiView)).setText("受け取った文字列"+ response.body());
-
 
                 List<BiposiWalk> biposiWalk = response.body();
-                Log.e("response", biposiWalk.toString());
+                Log.e("listBiposi", biposiWalk.toString());
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Biposi.this, R.layout.biposi_list, R.id.biposiRow_text);
                 Log.e("ArrayAdapter", adapter.toString());
 
-                
+                ArrayList<String> dateList = new ArrayList<>();
+
                 //Collections.sort(biposiWalk, new BiposiComparator());
 
-                for (BiposiWalk obj : biposiWalk) {
-                    System.out.println(obj.getStartDate());
-                }
-
-
-
-
-                try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
-                    Date date = sdf.parse(biposiWalk.toString());
-                    System.out.println(date.toString());
-                    Log.e("sdf", date.toString());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    Log.e("ParseException", e.toString());
-
-                }
-
                 for (BiposiWalk b : biposiWalk) {
-                    StringBuilder builder = new StringBuilder();
-                    builder.append(b.getStartDate() + b.getSteps() + "歩");
-                    adapter.add(builder.toString());
-                    //System.out.println(Arrays.toString(biposiWalk));
-                    Log.e("getSteps", b.toString());
 
-                    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年M月d日 HH時mm分ss秒");
-                    //System.out.println(sdf2.format(b));
-                    Log.e("date", sdf2.toString());
+                    try {
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss Z", Locale.ENGLISH);
+                        //Log.e("SDF", sdf.toString());
 
+                        //Date date = sdf.parse(b.getStartDate().toString());
+                        Date date = sdf.parse(b.getStartDate());
+                        System.out.println(date.toString());
+                        Log.e("Parseできてる？？", date.toString());
+
+
+                        sdf.applyPattern("yyyy'年'MM'月'dd'日'");
+                        System.out.println(sdf.format(date));
+                        Log.e("applyPatternできてる？？", date.toString());
+
+
+                        /*
+                        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy'年'MM'月'dd'日'");
+                        System.out.println(sdf2.format(date));
+                        Log.e("Changeできてる？？", date.toString());
+                        Log.e("sdf2", sdf2.toString());
+                        */
+
+
+
+                        /*
+                        String str = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(date);
+                        System.out.println("String型 = " + str);
+                        Log.e("変更できてるー？？", str.toString());
+                        */
+
+                        dateList.add(sdf + " " + b.getSteps());
+                        Log.e("BiposiDateListできてる？？", dateList.toString());
+
+
+                        /*
+                        StringBuilder builder = new StringBuilder();
+                        builder.append(str + " " + b.getSteps() + "歩");
+                        Log.e("StringBuildできてる？？", builder.toString());
+                        adapter.add(builder.toString());
+                        Log.e("Adapterできてる？？", adapter.toString());
+                        //System.out.println(Arrays.toString(biposiWalk));
+                        //Log.e("getSteps", b.toString());
+                        */
+
+
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        Log.e("ParseExceptionBiposi44", e.toString());
+                    }
                 }
 
+                Collections.sort(dateList, Collections.reverseOrder());
+                Log.e("Collections biposi", dateList.toString());
+
+                for (String s : dateList) {
+                    String string = s;
+                    Log.e("string", string.toString());
+                    adapter.add(string);
+                    Log.e("Adapterできてるーーー？？", adapter.toString());
+                }
 
                 BiposiView.setAdapter(adapter);
 
-                Collections.reverse(biposiWalk);
-                Log.e("Collections biposi", biposiWalk.toString());
 
             }
 

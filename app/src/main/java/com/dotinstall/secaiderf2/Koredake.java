@@ -13,8 +13,15 @@ import android.widget.ListView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -54,19 +61,6 @@ public class Koredake extends AppCompatActivity {
         ImageView imagePush = findViewById(R.id.push);
         imagePush.setImageResource(R.drawable.touch3);
 
-        /*
-        ImageView imagebipo = findViewById(R.id.koredakeActivity);
-        imagebipo.setImageResource(R.drawable.touch3); */
-
-        /*
-        Intent intent = getIntent();
-        message = intent.getStringExtra("message");
-
-        TextView textView = (TextView) findViewById(R.id.profileName);
-        textView.setText(message);
-        */
-
-
 
         User user;
         user = new User();
@@ -101,45 +95,104 @@ public class Koredake extends AppCompatActivity {
             public void onResponse(Call<List<KoredakeTaiso>> call, Response<List<KoredakeTaiso>> response) {
                 Log.e("onResponse", response.toString());
                 Log.e("onResponse", call.toString());
-                //new String()はStringを生成するものです
-                //((TextView) findViewById(R.id.biposiView)).setText("受け取った文字列"+ response.body());
 
                 List<KoredakeTaiso> koredake = response.body();
                 Log.e("response", koredake.toString());
 
 
                 ArrayAdapter<String> adapter = new ArrayAdapter<>(Koredake.this, R.layout.biposi_list, R.id.biposiRow_text);
-                Log.e("ArrayAdapter", adapter.toString());
+                //Log.e("ArrayAdapter", adapter.toString());
+
+                ArrayList<String> dateList = new ArrayList<>();
+                ArrayList<String> dateList2 = new ArrayList<>();
+                KoredakeFormated koreF = new KoredakeFormated();
 
 
-                try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss Z");
-                    Date date = sdf.parse(koredake.toString());
-                    System.out.println(date.toString());
-                    Log.e("sdf", date.toString());
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    Log.e("ParseException", e.toString());
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy'年'MM'月'dd'日'", Locale.ENGLISH);
 
-                }
+
+                Date date = new Date();
+
 
                 for (KoredakeTaiso k : koredake) {
+
+                try {
+                    //SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                    //Log.e("SDF", sdf.toString());
+
+                    //Date date = sdf.parse(k.getExerciseDate().toString());
+                    date = sdf.parse(k.getExerciseDate().toString());
+                    System.out.println(date.toString());
+                    Log.e("Parseできてる？？", date.toString());
+
+                    /*
+                    Arrays.sort(koredake, new Comparator<KoredakeTaiso>() {
+                        public int compare(KoredakeTaiso date1, KoredakeTaiso date2) {
+                            return date1.date - date2.getExerciseDate();
+                        }
+                    });
+                    */
+
+                    String str = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(date);
+                    System.out.println("String型 = " + str);
+                    Log.e("変更できてるー？？", str.toString());
+
+
+                    dateList.add(str);
+                    Log.e("KoredakeDateListできてる？？", dateList.toString());
+
+                    /*
                     StringBuilder builder = new StringBuilder();
-                    builder.append(k.getExerciseDate());
+                    builder.append(str);
                     adapter.add(builder.toString());
-                    //System.out.println(Arrays.toString(biposiWalk));
-                    Log.e("getKoredatke", k.toString());
+                    */
 
-                    SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy年M月d日 HH時mm分ss秒");
-                    //System.out.println(sdf2.format(b));
-                    Log.e("date", sdf2.toString());
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    Log.e("ParseExceptionKoredake", e.toString());
+                }
+                }
 
+                Collections.sort(dateList, Collections.reverseOrder());
+                Log.e("Collections koredake", dateList.toString());
+
+
+                for(String s : dateList) {
+
+                    try{
+                    date = sdf2.parse(s);
+                    System.out.println(date.toString());
+                    Log.e("Parseその２", date.toString());
+
+                    String str2 = new SimpleDateFormat("yyyy'年'MM'月'd'日'").format(date);
+                    Log.e("変更その２", str2.toString());
+
+                    //koreF.setKoreFmt(str2);
+                    //Log.e("KoredakeF？？", koreF.toString());
+
+                    dateList2.add(str2);
+
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                        Log.e("ParseExceptionKoredake2", e.toString());
+                    }
+                }
+
+                koreF.setKoreFmt(dateList2);
+                Log.e("KoredakeF？？", koreF.toString());
+
+
+
+                for (String s : dateList2) {
+                    String string = s;
+                    Log.e("string", string);
+                    adapter.add(string);
+                    //Log.e("Adapterできてるーーー？？", adapter.toString());
                 }
 
 
                 KoredakeView.setAdapter(adapter);
-
-
             }
 
 

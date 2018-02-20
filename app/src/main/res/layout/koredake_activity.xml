@@ -94,7 +94,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:text="ヘルスケアデータを確認する"
+        android:text=""
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textSize="15sp"
