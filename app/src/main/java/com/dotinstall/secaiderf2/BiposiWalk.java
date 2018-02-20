@@ -12,6 +12,7 @@ import com.google.gson.annotations.SerializedName;
 
 public class BiposiWalk {
 
+
     @Override
     public String toString() {
         return startDate;

@@ -25,9 +25,6 @@
         <activity android:name="com.dotinstall.secaiderf2.Biposi" android:label="se･ca･ide"></activity>
         <activity android:name="com.dotinstall.secaiderf2.HealthCareData" android:label="se･ca･ide"></activity>
         <activity android:name="com.dotinstall.secaiderf2.MainActivity" android:label="se･ca･ide"></activity>
-        <activity android:name="com.dotinstall.secaiderf2.Calendar" android:label="se･ca･ide"></activity>
-        <activity android:name="com.dotinstall.secaiderf2.Top" android:label="se･ca･ide"></activity>
-
 
 
     </application>
