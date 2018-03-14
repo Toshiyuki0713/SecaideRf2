@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.linecorp.linesdk.auth.LineLoginApi;
 import com.linecorp.linesdk.auth.LineLoginResult;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Calendar;
 
@@ -29,6 +31,8 @@ import static android.media.audiofx.AudioEffect.SUCCESS;
 import static okhttp3.internal.http2.ErrorCode.CANCEL;
 
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<String> dateList2 = new ArrayList<>();
 
     private static final int REQUEST_CODE = 1;
 
@@ -76,6 +80,99 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString("user_id", result.getLineProfile().getUserId());
                 editor.apply();
                 Log.e("SharedOK", editor.toString());
+
+
+
+                Retrofit retrofit = new Retrofit.Builder()
+                        .baseUrl("https://travossbot.herokuapp.com")
+                        .addConverterFactory(GsonConverterFactory.create())
+                        .build();
+                Koredakeinterface koreservice = retrofit.create(Koredakeinterface.class);
+
+
+                Call<List<KoredakeTaiso>> call = koreservice.getKoredakeTaiso(lineData.getString("user_id", "No Data"));
+                Log.e("service", koreservice.toString());
+                Log.e("lineData", lineData.toString());
+
+                call.enqueue(new Callback<List<KoredakeTaiso>>() {
+                    @Override
+                    public void onResponse(Call<List<KoredakeTaiso>> call, Response<List<KoredakeTaiso>> response) {
+                        Log.e("onResponse", response.toString());
+                        Log.e("onResponse", call.toString());
+
+                        List<KoredakeTaiso> koredake = response.body();
+                        Log.e("response", koredake.toString());
+
+                        ArrayList<String> dateList = new ArrayList<>();
+                        //ArrayList<String> dateList2 = new ArrayList<>();
+                        //KoredakeFormated koreF = new KoredakeFormated();
+
+
+                        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+                        SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy'年'MM'月'dd'日'", Locale.ENGLISH);
+
+
+                        Date date = new Date();
+
+
+                        for (KoredakeTaiso k : koredake) {
+
+                            try {
+                                date = sdf.parse(k.getExerciseDate().toString());
+                                System.out.println(date.toString());
+                                Log.e("Parseできてる？？", date.toString());
+
+
+                                String str = new SimpleDateFormat("yyyy'年'MM'月'dd'日'").format(date);
+                                //Log.e("変更できてるー？？", str.toString());
+
+
+                                dateList.add(str);
+                                //Log.e("KoredakeDateListできてる？？", dateList.toString());
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                                //Log.e("ParseExceptionKoredake", e.toString());
+                            }
+                        }
+
+                        Collections.sort(dateList, Collections.reverseOrder());
+                        Log.e("Collections koredake", dateList.toString());
+
+
+                        for(String s : dateList) {
+
+                            try{
+                                date = sdf2.parse(s);
+                                System.out.println(date.toString());
+                                Log.e("Parseその２", date.toString());
+
+                                String str2 = new SimpleDateFormat("yyyy'年'M'月'd'日'").format(date);
+                                //Log.e("変更その２", str2.toString());
+
+                                dateList2.add(str2);
+                                Log.e("KoredakeDateList2？？", dateList2.toString());
+
+
+                            } catch (ParseException e) {
+                                e.printStackTrace();
+                                Log.e("ParseExceptionKoredake2", e.toString());
+                            }
+                        }
+
+                        //koreF.setKoreFmt(dateList2);
+                        //Log.e("KoredakeF？？", koreF.toString());
+                    }
+
+
+                    @Override
+                    public void onFailure(Call<List<KoredakeTaiso>> call, Throwable t) {
+                        Log.e("onFailure", call.toString());
+                        Log.e("onFailure", t.toString());
+                    }
+                });
+
+
 
                 Intent transitionIntent = new Intent(this, PostLoginActivity.class);
                 //transitionIntent.putExtra("display_name", result.getLineProfile().getDisplayName());
