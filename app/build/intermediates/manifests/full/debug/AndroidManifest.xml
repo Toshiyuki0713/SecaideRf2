@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.dotinstall.secaiderf2"
+    android:versionCode="11"
+    android:versionName="2.0" >
+
+    <uses-sdk
+        android:minSdkVersion="17"
+        android:targetSdkVersion="26" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        android:allowBackup="true"
+        android:debuggable="true"
+        android:icon="@drawable/secaide_icon1"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/secaide_icon1"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
+        <activity
+            android:name="com.dotinstall.secaiderf2.PostLoginActivity"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.dotinstall.secaiderf2.SplashActivity"
+            android:label="se･ca･ide" />
+        <activity
+            android:name="com.dotinstall.secaiderf2.Koredake"
+            android:label="se･ca･ide" />
+        <activity
+            android:name="com.dotinstall.secaiderf2.Biposi"
+            android:label="se･ca･ide" />
+        <activity
+            android:name="com.dotinstall.secaiderf2.HealthCareData"
+            android:label="se･ca･ide" />
+        <activity
+            android:name="com.dotinstall.secaiderf2.MainActivity"
+            android:label="se･ca･ide" />
+
+        <meta-data
+            android:name="android.support.VERSION"
+            android:value="26.1.0" />
+        <!--
+         "launchMode" of this activity must not be singleInstance and singleTask because, this is
+         launched with using startActivityForResult().
+         This activity must be stacked on same Activity Stack of the caller.
+        -->
+        <activity
+            android:name="com.linecorp.linesdk.auth.internal.LineAuthenticationActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="false"
+            android:launchMode="singleTop"
+            android:theme="@style/LineSdk_AuthenticationActivity" />
+        <activity
+            android:name="com.linecorp.linesdk.auth.internal.LineAuthenticationCallbackActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="lineauth" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="android.arch.lifecycle.VERSION"
+            android:value="27.0.0-SNAPSHOT" />
+    </application>
+
+</manifest>
