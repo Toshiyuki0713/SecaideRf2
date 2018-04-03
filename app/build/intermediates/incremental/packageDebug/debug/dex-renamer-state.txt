@@ -1,0 +1,4 @@
+#Mon Apr 02 18:46:06 JST 2018
+base.0=/Users/gosho/AndroidStudioProjects/SecaideRf2-master/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex

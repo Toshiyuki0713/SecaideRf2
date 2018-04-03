@@ -20,7 +20,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar" >
         <activity
-            android:name="com.dotinstall.secaiderf2.SplashActivity"
+            android:name="com.dotinstall.secaiderf2.PostLoginActivity2"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.dotinstall.secaiderf2.PostLoginActivity"
+            android:name="com.dotinstall.secaiderf2.SplashActivity"
             android:label="se･ca･ide" />
         <activity
             android:name="com.dotinstall.secaiderf2.Koredake"

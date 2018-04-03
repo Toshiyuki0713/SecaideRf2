@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/gosho/Documents/clone/SecaideRf2/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-port/values-port.xml",
+            "outputFile": "/Users/gosho/AndroidStudioProjects/SecaideRf2-master/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
                     "source": "/Users/gosho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/b375972284c85e72e576fc0c361529a4/res/values-port/values-port.xml",
@@ -16,10 +16,10 @@
             ]
         },
         {
-            "outputFile": "/Users/gosho/AndroidStudioProjects/SecaideRf2/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-port/values-port.xml",
+            "outputFile": "/Users/masakazu/Documents/0_DevWorkSpace/Android/Projects/SecaideRf2/app/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-port/values-port.xml",
             "map": [
                 {
-                    "source": "/Users/gosho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/b375972284c85e72e576fc0c361529a4/res/values-port/values-port.xml",
+                    "source": "/Users/masakazu/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/81e98d9174a2e47cef727e41a71c9e7e/res/values-port/values-port.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
