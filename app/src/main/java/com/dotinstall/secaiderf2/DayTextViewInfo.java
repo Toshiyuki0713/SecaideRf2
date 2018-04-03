@@ -15,7 +15,8 @@ import java.util.ArrayList;
 public class DayTextViewInfo {
 
     private int textViewId = 0;					//テキストビューＩＤ
-    private TextView textObject = null;			//テキストオブジェクト
+    //private TextView textObject = null;			//テキストオブジェクト
+    private CustomImageView textObject = null;			//テキストオブジェクト
     private int dayNum = 0;						//設定日付
     private boolean isNowDay = false;			//当日フラグ
     private boolean isSelected = false;			//選択フラグ
@@ -44,13 +45,14 @@ public class DayTextViewInfo {
      * textObject 取得
      * @return textObject
      */
-    public TextView getTextObject() {
+    //public TextView getTextObject() {
+    public CustomImageView getTextObject() {
         return textObject;
     }
     /**
      * @param textObject 設定 textObject
      */
-    public void setTextObject(TextView textObject) {
+    public void setTextObject(CustomImageView textObject) {
         this.textObject = textObject;
     }
 
@@ -102,11 +104,10 @@ public class DayTextViewInfo {
     public String getDispString() {
 
         if(this.dayNum != 0) {
-            return String.valueOf(this.dayNum) + "\n";
+            return String.valueOf(this.dayNum);
         }
         else {
             return "";
-
         }
     }
 
@@ -119,4 +120,6 @@ public class DayTextViewInfo {
     public void setDayInfo(ArrayList<String> dayInfo) {
         this.dayInfo = dayInfo;
     }
+
+
 }

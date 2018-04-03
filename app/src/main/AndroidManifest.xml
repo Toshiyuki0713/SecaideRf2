@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity
-            android:name=".SplashActivity"
+            android:name=".PostLoginActivity2"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.dotinstall.secaiderf2.PostLoginActivity" android:label="se･ca･ide"></activity>
+        <activity android:name="com.dotinstall.secaiderf2.SplashActivity" android:label="se･ca･ide"></activity>
         <activity android:name="com.dotinstall.secaiderf2.Koredake" android:label="se･ca･ide"></activity>
         <activity android:name="com.dotinstall.secaiderf2.Biposi" android:label="se･ca･ide"></activity>
         <activity android:name="com.dotinstall.secaiderf2.HealthCareData" android:label="se･ca･ide"></activity>
