@@ -1,10 +1,20 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/masakazu/Documents/0_DevWorkSpace/Android/Projects/SecaideRf2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "outputFile": "/Users/gosho/AndroidStudioProjects/SecaideRf2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/Users/masakazu/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/81e98d9174a2e47cef727e41a71c9e7e/res/values-v16/values-v16.xml",
+                    "source": "/Users/gosho/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/58dc46883575a7ab9564773523f8ebbb/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/Users/gosho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/b375972284c85e72e576fc0c361529a4/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -21,15 +31,39 @@
                         "endColumns": "12",
                         "endOffsets": "289"
                     }
-                },
+                }
+            ]
+        },
+        {
+            "outputFile": "/Users/gosho/Documents/clone/SecaideRf2/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-v16/values-v16.xml",
+            "map": [
                 {
-                    "source": "/Users/masakazu/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/826412ad8c77ac0a94382c76cd7fde86/res/values-v16/values-v16.xml",
+                    "source": "/Users/gosho/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/58dc46883575a7ab9564773523f8ebbb/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
                         "startOffsets": "55",
                         "endColumns": "65",
                         "endOffsets": "116"
+                    }
+                },
+                {
+                    "source": "/Users/gosho/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/b375972284c85e72e576fc0c361529a4/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
                     }
                 }
             ]

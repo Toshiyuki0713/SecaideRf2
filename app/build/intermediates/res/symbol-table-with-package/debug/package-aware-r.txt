@@ -625,11 +625,10 @@ int drawable sec_list2 0x7f06006c
 int drawable secaide_03 0x7f06006d
 int drawable secaide_icon1 0x7f06006e
 int drawable splash 0x7f06006f
-int drawable text_day_line 0x7f060070
-int drawable title 0x7f060071
-int drawable tooltip_frame_dark 0x7f060072
-int drawable tooltip_frame_light 0x7f060073
-int drawable touch3 0x7f060074
+int drawable title 0x7f060070
+int drawable tooltip_frame_dark 0x7f060071
+int drawable tooltip_frame_light 0x7f060072
+int drawable touch3 0x7f060073
 int id ALT 0x7f070000
 int id CTRL 0x7f070001
 int id FUNCTION 0x7f070002

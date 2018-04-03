@@ -2704,11 +2704,10 @@ public final class R {
     public static final int secaide_03=0x7f06006d;
     public static final int secaide_icon1=0x7f06006e;
     public static final int splash=0x7f06006f;
-    public static final int text_day_line=0x7f060070;
-    public static final int title=0x7f060071;
-    public static final int tooltip_frame_dark=0x7f060072;
-    public static final int tooltip_frame_light=0x7f060073;
-    public static final int touch3=0x7f060074;
+    public static final int title=0x7f060070;
+    public static final int tooltip_frame_dark=0x7f060071;
+    public static final int tooltip_frame_light=0x7f060072;
+    public static final int touch3=0x7f060073;
   }
   public static final class id {
     public static final int ALT=0x7f070000;
